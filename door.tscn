@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dohyiukih1svw"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_5cq1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ukan"]
+size = Vector2(213, 20)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bjlu8"]
+polygon = PackedVector2Array(-8, 7, -8, -9, 202, -8, 202, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbfu0"]
+radius = 19.105
+
+[node name="Door" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 16
+collision_mask = 15
+mass = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(97, 0)
+shape = SubResource("RectangleShape2D_2ukan")
+
+[node name="Icon" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(97, 0)
+scale = Vector2(1.6875, 0.164063)
+texture = ExtResource("1_5cq1e")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="RigidBody2D"]
+occluder = SubResource("OccluderPolygon2D_bjlu8")
+occluder_light_mask = 3
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_rbfu0")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(195, 31)
+shape = SubResource("CircleShape2D_rbfu0")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-90, -87)
+shape = SubResource("CircleShape2D_rbfu0")

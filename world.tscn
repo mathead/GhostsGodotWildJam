@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://b150emh76fxn8"]
+
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_3emnr"]
+[ext_resource type="PackedScene" uid="uid://bd3ib66hqbc4w" path="res://wall.tscn" id="2_5qovj"]
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="3_30aqo"]
+[ext_resource type="PackedScene" uid="uid://0lt7mjgsslet" path="res://tree.tscn" id="4_r1jgh"]
+[ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="5_xkwhc"]
+[ext_resource type="PackedScene" uid="uid://c6h5npw8uysyc" path="res://ghost.tscn" id="6_shoki"]
+[ext_resource type="PackedScene" uid="uid://c82itirsdsaeq" path="res://window.tscn" id="8_747ao"]
+[ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="8_hx8lx"]
+[ext_resource type="PackedScene" uid="uid://dohyiukih1svw" path="res://door.tscn" id="9_81sgn"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gephp"]
+polygon = PackedVector2Array(-0.42, -0.41, 0.44, -0.41, 0.44, 0.42, -0.42, 0.42)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gh6ra"]
+polygon = PackedVector2Array(602, 587, 684, 560, 783, 603, 768, 687, 720, 731, 656, 739, 592, 680)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r3yls"]
+polygon = PackedVector2Array(-0.49, -0.49, -0.49, 0.49, 0.49, 0.49, 0.49, -0.49)
+
+[node name="World" type="Node2D"]
+visibility_layer = 17
+
+[node name="1Px" type="Sprite2D" parent="."]
+light_mask = 0
+visibility_layer = 17
+position = Vector2(340, 475)
+scale = Vector2(100, 100)
+texture = ExtResource("2_3emnr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="1Px"]
+occluder = SubResource("OccluderPolygon2D_gephp")
+occluder_light_mask = 0
+
+[node name="1Px5" type="Sprite2D" parent="1Px"]
+modulate = Color(0.458824, 0, 0, 1)
+light_mask = 0
+visibility_layer = 16
+texture = ExtResource("2_3emnr")
+
+[node name="Wall" parent="." instance=ExtResource("2_5qovj")]
+position = Vector2(790, 370)
+
+[node name="Wall2" parent="." instance=ExtResource("2_5qovj")]
+position = Vector2(709, 153)
+scale = Vector2(7.38303, 0.710622)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_gh6ra")
+
+[node name="1Px2" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(1136, 597)
+scale = Vector2(100, 100)
+texture = ExtResource("2_3emnr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="1Px2"]
+occluder = SubResource("OccluderPolygon2D_r3yls")
+
+[node name="1Px5" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+visibility_layer = 17
+position = Vector2(1500, 517)
+scale = Vector2(100, 536)
+texture = ExtResource("2_3emnr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="1Px5"]
+occluder = SubResource("OccluderPolygon2D_r3yls")
+metadata/_edit_lock_ = true
+
+[node name="1Px3" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(88, 387.5)
+scale = Vector2(100, 595)
+texture = ExtResource("2_3emnr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="1Px3"]
+occluder = SubResource("OccluderPolygon2D_r3yls")
+
+[node name="1Px4" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(768, 792)
+scale = Vector2(735.48, 80.0599)
+texture = ExtResource("2_3emnr")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="1Px4"]
+occluder = SubResource("OccluderPolygon2D_r3yls")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(1245, 367)
+scale = Vector2(2.14063, 1.94531)
+texture = ExtResource("3_30aqo")
+
+[node name="Tree" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(298, -139)
+
+[node name="Tree2" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(414, -284)
+
+[node name="Tree3" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(176, -294)
+
+[node name="Tree4" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(333, -441)
+
+[node name="Tree5" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(576, -118)
+
+[node name="Tree6" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(706, -392)
+
+[node name="Tree" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-571, 5)
+
+[node name="Tree2" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-455, -140)
+
+[node name="Tree3" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-693, -150)
+
+[node name="Tree4" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-536, -297)
+
+[node name="Tree5" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-293, 26)
+
+[node name="Tree6" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-163, -248)
+
+[node name="Tree7" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-278, -129)
+
+[node name="Tree8" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-346, -414)
+
+[node name="Tree9" parent="Tree6" instance=ExtResource("4_r1jgh")]
+position = Vector2(-758, -300)
+
+[node name="Tree7" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(591, -273)
+
+[node name="Tree8" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(523, -558)
+
+[node name="Tree9" parent="." instance=ExtResource("4_r1jgh")]
+position = Vector2(111, -444)
+
+[node name="Player" parent="." instance=ExtResource("5_xkwhc")]
+position = Vector2(457, 289)
+
+[node name="Ghost" parent="." instance=ExtResource("6_shoki")]
+position = Vector2(525, 611)
+
+[node name="Ghost2" parent="." instance=ExtResource("6_shoki")]
+position = Vector2(265, 599)
+
+[node name="Ghost3" parent="." instance=ExtResource("6_shoki")]
+position = Vector2(753, 621)
+
+[node name="NavField" parent="." instance=ExtResource("8_hx8lx")]
+position = Vector2(-219, -921)
+
+[node name="Marker2D" parent="NavField" index="0"]
+position = Vector2(1779, 1867)
+
+[node name="Window" parent="." instance=ExtResource("8_747ao")]
+position = Vector2(1275, 726)
+
+[node name="Door" parent="." instance=ExtResource("9_81sgn")]
+position = Vector2(92, 67)
+
+[editable path="NavField"]

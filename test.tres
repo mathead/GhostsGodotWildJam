@@ -1,0 +1,77 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dp477c51ms5ie"]
+
+[sub_resource type="VisualShaderNodeSDFRaymarch" id="VisualShaderNodeSDFRaymarch_s04n3"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_037t4"]
+input_name = "specular_shininess_texture"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hnpuc"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_25el2"]
+input_name = "screen_uv"
+
+[resource]
+code = "shader_type canvas_item;
+
+
+
+void fragment() {
+// Input:5
+	vec2 n_out5p0 = SCREEN_UV;
+
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(SPECULAR_SHININESS_TEXTURE, n_out5p0);
+
+
+	float n_out2p0;
+	bool n_out2p1;
+	vec2 n_out2p2;
+// SDFRaymarch:2
+		{
+				vec2 __from_pos = vec2(n_out4p0.xy);
+				vec2 __to_pos = vec2(0.0f);
+
+				vec2 __at = __from_pos;
+				float __max_dist = distance(__from_pos, __to_pos);
+				vec2 __dir = normalize(__to_pos - __from_pos);
+
+				float __accum = 0.0f;
+				while(__accum < __max_dist) {
+						float __d = texture_sdf(__at);
+						__accum += __d;
+						if (__d < 0.01f) {
+								break;
+						}
+						__at += __d * __dir;
+				}
+				float __dist = min(__max_dist, __accum);
+				n_out2p0 = __dist;
+				n_out2p1 = __accum < __max_dist;
+				n_out2p2 = __from_pos + __dir * __dist;
+		}
+
+
+// Output:0
+	COLOR.a = n_out2p0;
+	NORMAL = vec3(n_out2p2, 0.0);
+
+
+}
+"
+graph_offset = Vector2(-856.501, -130.102)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(620, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeSDFRaymarch_s04n3")
+nodes/fragment/2/position = Vector2(320, 140)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_037t4")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_hnpuc")
+nodes/fragment/4/position = Vector2(-220, 40)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_25el2")
+nodes/fragment/5/position = Vector2(-748.201, 75.4773)
+nodes/fragment/connections = PackedInt32Array(2, 2, 0, 2, 2, 0, 0, 1, 3, 0, 4, 2, 4, 0, 2, 0, 5, 0, 4, 0)

@@ -1,0 +1,164 @@
+[gd_scene load_steps=14 format=3 uid="uid://deve4aviylmh6"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_i2qk7"]
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_vdmwx"]
+[ext_resource type="PackedScene" uid="uid://b150emh76fxn8" path="res://world.tscn" id="5_1cgn2"]
+[ext_resource type="Shader" path="res://draw_gi.gdshader" id="5_ni6dk"]
+[ext_resource type="Shader" path="res://gi.gdshader" id="5_oymd0"]
+[ext_resource type="Shader" path="res://last_frame_buffer.gdshader" id="6_8rd41"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34mb1"]
+resource_local_to_scene = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3ypmn"]
+blend_mode = 4
+light_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3ema"]
+shader = ExtResource("5_ni6dk")
+shader_parameter/u_sRGB = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rh0f5"]
+shader = ExtResource("6_8rd41")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xipw4"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_trggk"]
+width = 320
+height = 180
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_xipw4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cv5u4"]
+shader = ExtResource("5_oymd0")
+shader_parameter/u_bounce = true
+shader_parameter/u_bounciness = 0.8
+shader_parameter/u_denoise = true
+shader_parameter/u_dir_light_multi = 5.0
+shader_parameter/u_dir_light_thin = 5.0
+shader_parameter/u_emission_dropoff = 4.0
+shader_parameter/u_emission_multi = 3.0
+shader_parameter/u_emission_range = 1000.0
+shader_parameter/u_max_raymarch_steps = 32
+shader_parameter/u_noise_data = SubResource("NoiseTexture2D_trggk")
+shader_parameter/u_rays_per_pixel = 80.0
+
+[node name="Main" type="Node2D"]
+material = SubResource("CanvasItemMaterial_34mb1")
+script = ExtResource("1_i2qk7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MainViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294967271
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Bg" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/MainViewport"]
+visible = false
+modulate = Color(0.227451, 0.156863, 0.156863, 1)
+visibility_layer = 17
+z_index = -10
+material = SubResource("CanvasItemMaterial_3ypmn")
+position = Vector2(392, 523)
+scale = Vector2(5000, 5000)
+texture = ExtResource("2_vdmwx")
+
+[node name="Bg2" type="Sprite2D" parent="CanvasLayer/SubViewportContainer/MainViewport"]
+modulate = Color(0.407843, 0.305882, 0.309804, 1)
+z_index = -9
+position = Vector2(392, 523)
+scale = Vector2(5000, 5000)
+texture = ExtResource("2_vdmwx")
+
+[node name="World" parent="CanvasLayer/SubViewportContainer/MainViewport" instance=ExtResource("5_1cgn2")]
+position = Vector2(90.9386, 31.7844)
+
+[node name="DrawGI" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = 50
+material = SubResource("ShaderMaterial_u3ema")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer"]
+visible = false
+z_index = 100
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LastFrameBufferViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LastFrameBufferViewport"]
+
+[node name="LastFrameBuffer" type="ColorRect" parent="LastFrameBufferViewport/CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_rh0f5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FPS" type="Label" parent="HUD"]
+unique_name_in_owner = true
+offset_right = 51.0
+offset_bottom = 26.0
+text = "asdfds"
+
+[node name="GIViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294935520
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GIViewport"]
+
+[node name="GI" type="ColorRect" parent="GIViewport/CanvasLayer"]
+unique_name_in_owner = true
+visibility_layer = 33
+material = SubResource("ShaderMaterial_cv5u4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Emissive" type="SubViewport" parent="."]
+unique_name_in_owner = true
+handle_input_locally = false
+canvas_cull_mask = 4293918736
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Bg" type="Sprite2D" parent="Emissive"]
+modulate = Color(0.0313726, 0.0313726, 0.0313726, 1)
+visibility_layer = 16
+z_index = -8
+material = SubResource("CanvasItemMaterial_3ypmn")
+position = Vector2(392, 523)
+scale = Vector2(5000, 5000)
+texture = ExtResource("2_vdmwx")

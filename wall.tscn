@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd3ib66hqbc4w"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_jg8lt"]
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_gj0ey"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t1c05"]
+blend_mode = 4
+light_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nevc"]
+size = Vector2(126, 126)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_in8bf"]
+polygon = PackedVector2Array(-63, -63, 63, -63, 63, 63, -63, 63)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rv6h3"]
+polygon = PackedVector2Array(-67, -67, 67, -67, 67, 67, -67, 67)
+
+[node name="Wall" type="StaticBody2D"]
+visibility_layer = 17
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_jg8lt")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0.760784, 128.498, 1)
+visibility_layer = 16
+material = SubResource("CanvasItemMaterial_t1c05")
+scale = Vector2(136, 136)
+texture = ExtResource("2_gj0ey")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7nevc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_in8bf")
+occluder_light_mask = 3
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_rv6h3")
+occluder_light_mask = 0

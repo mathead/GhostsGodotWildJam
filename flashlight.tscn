@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx0jfxifar8wq"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_1ec76"]
+[ext_resource type="Script" path="res://flashlight.gd" id="1_t1o8q"]
+[ext_resource type="Texture2D" uid="uid://bh7iyn1s6n5i2" path="res://2x/Asset 2@2x.png" id="2_v3x6w"]
+[ext_resource type="Texture2D" uid="uid://bv1ded6u8duh4" path="res://2x/flashlight.png" id="3_n0gpt"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7qli1"]
+polygon = PackedVector2Array(0, 0, 93, -25, 108, -15, 115, -2, 102, 16, 87, 21)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_axu75"]
+polygon = PackedVector2Array(0, 0, 4, -3, 13, -7, 24, -11, 41, -15, 110, -31, 127, -16, 134, 0, 127, 16, 109, 30, 41, 14, 25, 11, 13, 7, 4, 3)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fx2va"]
+polygon = PackedVector2Array(0, 0, 96, -35, 177, -62, 262, -73, 314, -43, 339, -1, 312, 38, 268, 64, 181.464, 61.7984, 93, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_syq64"]
+polygon = PackedVector2Array(45, -20, -1, 0, 37, 18, 127.81, 51.0857, 144, 61, 152, 77, 144, 92, 10, 38, -12, 31, -33, -4, -20, -28, 5, -39, 140, -91, 148, -71, 142, -57, 127.26, -47.9854)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oqxhq"]
+polygon = PackedVector2Array(15, -27, -1, 0, 13, 25, 16, 53, -7, 58, -25, 34, -33, 0, -24, -32, -7, -56, 12, -53)
+
+[node name="Flashlight" type="Node2D"]
+visibility_layer = 17
+script = ExtResource("1_t1o8q")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.109375, 0.109375)
+texture = ExtResource("1_1ec76")
+
+[node name="Light" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+visibility_layer = 25
+position = Vector2(9, 0)
+energy = 1.74
+blend_mode = 2
+shadow_enabled = true
+shadow_color = Color(0.333333, 0.333333, 0.333333, 0)
+texture = ExtResource("2_v3x6w")
+offset = Vector2(181, 0)
+texture_scale = 0.5
+
+[node name="Light2" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
+energy = 1.74
+blend_mode = 1
+range_item_cull_mask = 16
+shadow_color = Color(0.333333, 0.333333, 0.333333, 0)
+texture = ExtResource("3_n0gpt")
+offset = Vector2(181, 0)
+texture_scale = 0.5
+
+[node name="Light3" type="PointLight2D" parent="."]
+unique_name_in_owner = true
+light_mask = 16
+visibility_layer = 16
+energy = 1.74
+range_item_cull_mask = 16
+shadow_enabled = true
+shadow_color = Color(0.333333, 0.333333, 0.333333, 0)
+shadow_item_cull_mask = 2
+texture = ExtResource("3_n0gpt")
+offset = Vector2(181, 0)
+texture_scale = 0.5
+
+[node name="SmallEmis" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_7qli1")
+occluder_light_mask = 0
+
+[node name="MedEmis" type="LightOccluder2D" parent="."]
+position = Vector2(9, 0)
+occluder = SubResource("OccluderPolygon2D_axu75")
+occluder_light_mask = 0
+
+[node name="BigEmis" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_fx2va")
+occluder_light_mask = 0
+
+[node name="BigBlock" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_syq64")
+occluder_light_mask = 0
+
+[node name="SmallBlock" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_oqxhq")
+occluder_light_mask = 0
+
+[node name="EmisPoly" type="Polygon2D" parent="."]
+light_mask = 16
+visibility_layer = 16
+z_index = -3
+position = Vector2(7, 0)
+polygon = PackedVector2Array(1, 0, 4, -5, 71, -29, 206, -57, 229, -2, 204, 48, 70, 28, 4, 5)
+
+[node name="ColorPoly" type="Polygon2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.117647)
+z_index = 4
+polygon = PackedVector2Array(1, 0, 30, -20, 73, -33, 140, -40, 155, 0, 138, 36, 75, 27, 33, 21)
+
+[node name="Asset22x" type="Sprite2D" parent="."]
+visible = false
+light_mask = 16
+visibility_layer = 16
+position = Vector2(182, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_n0gpt")

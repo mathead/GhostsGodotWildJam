@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://0lt7mjgsslet"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_8wlth"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wu64a"]
+polygon = PackedVector2Array(0, -27, 20, -19, 26, 0, 20, 19, 0, 25, -23, 19, -26, -8, -19, -23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40y6v"]
+radius = 29.0172
+
+[node name="Tree" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.839216, 0.435294, 0.278431, 1)
+scale = Vector2(0.484375, 0.484375)
+texture = ExtResource("1_8wlth")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_wu64a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_40y6v")

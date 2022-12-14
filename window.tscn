@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c82itirsdsaeq"]
+
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="1_jbv0u"]
+[ext_resource type="Script" path="res://window.gd" id="1_rqqkc"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1ufbb"]
+polygon = PackedVector2Array(-0.403505, -0.478544, 0.403505, -0.478544, 0.403505, 0.478544, -0.403505, 0.478544)
+
+[node name="Window" type="Node2D"]
+visibility_layer = 17
+scale = Vector2(22.3045, 160.905)
+script = ExtResource("1_rqqkc")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_jbv0u")
+
+[node name="Emis" type="Sprite2D" parent="."]
+visibility_layer = 16
+texture = ExtResource("1_jbv0u")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_1ufbb")

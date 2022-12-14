@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dewkbrw8agqij"]
+
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_mwviw"]
+[ext_resource type="Script" path="res://flare.gd" id="1_wt703"]
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="3_xuxxx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30hos"]
+radius = 7.0
+height = 51.8134
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_45lnk"]
+polygon = PackedVector2Array(-24.914, -5.98457, 24.9066, -6.01543, 24.914, 5.98457, -24.9066, 6.01543)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wapf4"]
+emission_shape = 1
+emission_sphere_radius = 9.37
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 58.82
+initial_velocity_max = 58.82
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(1, 0, 0, 1)
+
+[node name="Flare" type="RigidBody2D"]
+visibility_layer = 17
+scale = Vector2(1.0036, 1)
+collision_layer = 8
+collision_mask = 9
+linear_damp = 4.0
+angular_damp = 3.0
+script = ExtResource("1_wt703")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(100, 0, 0, 1)
+visibility_layer = 17
+z_index = -1
+position = Vector2(-0.0269169, 7.15256e-07)
+scale = Vector2(0.405213, 0.108251)
+texture = ExtResource("1_mwviw")
+
+[node name="Emis" type="Sprite2D" parent="."]
+modulate = Color(100, 0, 0, 1)
+light_mask = 0
+visibility_layer = 16
+z_index = -1
+position = Vector2(-1.90735e-06, 2.38419e-07)
+scale = Vector2(51.8134, 14)
+texture = ExtResource("3_xuxxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_30hos")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+rotation = 0.000619442
+occluder = SubResource("OccluderPolygon2D_45lnk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+amount = 20
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_wapf4")

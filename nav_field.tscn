@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dty7qqpakb4la"]
+
+[ext_resource type="Script" path="res://NavField.gd" id="1_aehlk"]
+
+[node name="NavField" type="Node2D"]
+script = ExtResource("1_aehlk")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 61.4

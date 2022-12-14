@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8nnrthsmiyt6"]
+
+[ext_resource type="Shader" path="res://gi.gdshader" id="1_dr0c6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnces"]
+shader = ExtResource("1_dr0c6")
+shader_parameter/u_bounce = null
+shader_parameter/u_bounciness = null
+shader_parameter/u_denoise = null
+shader_parameter/u_dir_light_multi = null
+shader_parameter/u_dir_light_thin = null
+shader_parameter/u_emission_dropoff = null
+shader_parameter/u_emission_multi = null
+shader_parameter/u_emission_range = null
+shader_parameter/u_max_raymarch_steps = null
+shader_parameter/u_rays_per_pixel = null
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/CanvasLayer"]
+material = SubResource("ShaderMaterial_tnces")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
