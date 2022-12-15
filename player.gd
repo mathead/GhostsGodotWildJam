@@ -14,8 +14,10 @@ func _physics_process(delta):
 
 #	move_and_slide()
 	
-	$Flashlight.look_at(get_global_mouse_position())
-	$MainCamera.offset = lerp($MainCamera.offset, (get_global_mouse_position() - global_position) / 20, 0.05)
+	$Node2D.look_at(get_global_mouse_position())
+	var dir = (get_global_mouse_position() - global_position)
+	$MainCamera.offset = lerp($MainCamera.offset, dir / 20, 0.05)
+	$MainCamera.rotation = lerp($MainCamera.rotation, (dir.x)/10000, 0.05)
 
 func _input(event):
 	if event.is_action_pressed("click"):

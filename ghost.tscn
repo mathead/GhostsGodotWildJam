@@ -4,14 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_ralwv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awpkm"]
-radius = 33.0151
+radius = 23.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y6t2v"]
 polygon = PackedVector2Array(-33, 0, -32, -11, -25, -22, -15, -30, 0, -33, 11, -31, 25, -21, 31, -12, 33, 0, 31, 13, 24, 23, 13, 30, 0, 33, -10, 32, -21, 25, -30, 14)
 
 [node name="Ghost" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 23
+motion_mode = 1
 script = ExtResource("1_lfx8r")
 
 [node name="Icon" type="Sprite2D" parent="."]

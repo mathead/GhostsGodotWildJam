@@ -4,19 +4,22 @@
 [ext_resource type="Script" path="res://window.gd" id="1_rqqkc"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1ufbb"]
-polygon = PackedVector2Array(-0.403505, -0.478544, 0.403505, -0.478544, 0.403505, 0.478544, -0.403505, 0.478544)
+polygon = PackedVector2Array(-2, -31, 2, -31, 2, 31, -2, 31)
 
 [node name="Window" type="Node2D"]
 visibility_layer = 17
-scale = Vector2(22.3045, 160.905)
 script = ExtResource("1_rqqkc")
 
 [node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.290196, 0.380392, 0.380392, 1)
+scale = Vector2(6, 64)
 texture = ExtResource("1_jbv0u")
 
 [node name="Emis" type="Sprite2D" parent="."]
 visibility_layer = 16
+scale = Vector2(6, 64)
 texture = ExtResource("1_jbv0u")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_1ufbb")
+occluder_light_mask = 3

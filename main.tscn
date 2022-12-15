@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_i2qk7"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_vdmwx"]
-[ext_resource type="PackedScene" uid="uid://b150emh76fxn8" path="res://world.tscn" id="5_1cgn2"]
+[ext_resource type="PackedScene" uid="uid://b7qemdxcfh22j" path="res://level_1.tscn" id="4_8a0an"]
 [ext_resource type="Shader" path="res://draw_gi.gdshader" id="5_ni6dk"]
 [ext_resource type="Shader" path="res://gi.gdshader" id="5_oymd0"]
 [ext_resource type="Shader" path="res://last_frame_buffer.gdshader" id="6_8rd41"]
@@ -80,8 +80,7 @@ position = Vector2(392, 523)
 scale = Vector2(5000, 5000)
 texture = ExtResource("2_vdmwx")
 
-[node name="World" parent="CanvasLayer/SubViewportContainer/MainViewport" instance=ExtResource("5_1cgn2")]
-position = Vector2(90.9386, 31.7844)
+[node name="Level1" parent="CanvasLayer/SubViewportContainer/MainViewport" instance=ExtResource("4_8a0an")]
 
 [node name="DrawGI" type="ColorRect" parent="CanvasLayer"]
 unique_name_in_owner = true

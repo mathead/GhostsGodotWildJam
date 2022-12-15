@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_5cq1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ukan"]
-size = Vector2(213, 20)
+size = Vector2(213, 36)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bjlu8"]
 polygon = PackedVector2Array(-8, 7, -8, -9, 202, -8, 202, 7)
@@ -15,7 +15,7 @@ radius = 19.105
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 16
-collision_mask = 15
+collision_mask = 27
 mass = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
@@ -32,10 +32,12 @@ occluder = SubResource("OccluderPolygon2D_bjlu8")
 occluder_light_mask = 3
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-6, 7)
 node_a = NodePath("../RigidBody2D")
 node_b = NodePath("../StaticBody2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -50,6 +52,7 @@ position = Vector2(195, 31)
 shape = SubResource("CircleShape2D_rbfu0")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
+collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]

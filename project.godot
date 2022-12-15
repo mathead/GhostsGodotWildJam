@@ -67,6 +67,7 @@ click={
 
 [layer_names]
 
+2d_render/layer_2="EmissiveShadow"
 2d_render/layer_4="LightColor"
 2d_render/layer_5="Emissive"
 2d_physics/layer_1="Walls"

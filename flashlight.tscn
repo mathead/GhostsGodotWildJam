@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx0jfxifar8wq"]
+[gd_scene load_steps=8 format=3 uid="uid://dx0jfxifar8wq"]
 
-[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_1ec76"]
 [ext_resource type="Script" path="res://flashlight.gd" id="1_t1o8q"]
 [ext_resource type="Texture2D" uid="uid://bh7iyn1s6n5i2" path="res://2x/Asset 2@2x.png" id="2_v3x6w"]
 [ext_resource type="Texture2D" uid="uid://bv1ded6u8duh4" path="res://2x/flashlight.png" id="3_n0gpt"]
@@ -17,16 +16,9 @@ polygon = PackedVector2Array(0, 0, 96, -35, 177, -62, 262, -73, 314, -43, 339, -
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_syq64"]
 polygon = PackedVector2Array(45, -20, -1, 0, 37, 18, 127.81, 51.0857, 144, 61, 152, 77, 144, 92, 10, 38, -12, 31, -33, -4, -20, -28, 5, -39, 140, -91, 148, -71, 142, -57, 127.26, -47.9854)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oqxhq"]
-polygon = PackedVector2Array(15, -27, -1, 0, 13, 25, 16, 53, -7, 58, -25, 34, -33, 0, -24, -32, -7, -56, 12, -53)
-
 [node name="Flashlight" type="Node2D"]
 visibility_layer = 17
 script = ExtResource("1_t1o8q")
-
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.109375, 0.109375)
-texture = ExtResource("1_1ec76")
 
 [node name="Light" type="PointLight2D" parent="."]
 unique_name_in_owner = true
@@ -83,10 +75,6 @@ occluder_light_mask = 0
 [node name="BigBlock" type="LightOccluder2D" parent="."]
 visible = false
 occluder = SubResource("OccluderPolygon2D_syq64")
-occluder_light_mask = 0
-
-[node name="SmallBlock" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_oqxhq")
 occluder_light_mask = 0
 
 [node name="EmisPoly" type="Polygon2D" parent="."]
