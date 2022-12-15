@@ -29,7 +29,7 @@ script = ExtResource("1_3exsh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aoj1j")
 
-[node name="MainCamera" type="Camera2D" parent="."]
+[node name="MainCamera" type="Camera2D" parent="." groups=["Camera"]]
 unique_name_in_owner = true
 ignore_rotation = false
 current = true

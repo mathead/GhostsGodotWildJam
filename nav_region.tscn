@@ -3,19 +3,20 @@
 [ext_resource type="Script" path="res://NavRegion.gd" id="1_wtf62"]
 [ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="2_bk8ih"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ctdj2"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_abb3c"]
 vertices = PackedVector2Array(32, -32, 32, 32, -32, 32, -32, -32)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 outlines = [PackedVector2Array(32, -32, 32, 32, -32, 32, -32, -32)]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_14mt1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltesy"]
 size = Vector2(56, 56)
 
 [node name="NavRegion" type="NavigationRegion2D"]
-navpoly = SubResource("NavigationPolygon_ctdj2")
+navpoly = SubResource("NavigationPolygon_abb3c")
 script = ExtResource("1_wtf62")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.141176)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_bk8ih")
@@ -24,4 +25,4 @@ texture = ExtResource("2_bk8ih")
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_14mt1")
+shape = SubResource("RectangleShape2D_ltesy")

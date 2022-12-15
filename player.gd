@@ -19,7 +19,7 @@ func _physics_process(delta):
 	$MainCamera.offset = lerp($MainCamera.offset, dir / 20, 0.05)
 	$MainCamera.rotation = lerp($MainCamera.rotation, (dir.x)/10000, 0.05)
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("click"):
 		var flare: RigidBody2D = flare_scene.instantiate()
 		get_parent().add_child(flare)
