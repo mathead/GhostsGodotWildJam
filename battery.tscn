@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmglrt7i10501"]
+
+[ext_resource type="Script" path="res://Battery.gd" id="1_3e3t8"]
+[ext_resource type="Texture2D" uid="uid://chphxgy3qwrpr" path="res://2x/Asset 4@2x.png" id="2_mxq5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2d2y"]
+radius = 64.0078
+
+[sub_resource type="Animation" id="Animation_egmor"]
+resource_name = "New Anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Asset42x:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6htl"]
+_data = {
+"New Anim": SubResource("Animation_egmor")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_oep88"]
+polygon = PackedVector2Array(-20, -48, -7.19608, -47.8353, -6.2061, -56.2626, 6.5999, -56.1822, 8.41902, -47.4249, 20, -48, 18, 52, 10.5848, 55.3531, -9.40901, 55.8522, -18, 52)
+
+[node name="Battery" type="Node2D"]
+rotation = 0.668461
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3e3t8")
+
+[node name="Asset42x" type="Sprite2D" parent="."]
+texture = ExtResource("2_mxq5v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_t2d2y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_a6htl")
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_oep88")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

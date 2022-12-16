@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dx0jfxifar8wq" path="res://flashlight.tscn" id="3_vn20y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivcda"]
-friction = 0.0
+friction = 0.09
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aoj1j"]
-radius = 22.0227
+radius = 30.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ilatt"]
 polygon = PackedVector2Array(24, -49, 6, 0, 8, 13, 28, 44, 0, 32, -15, 20, -25, 5, -24, -5, -16, -17, -7, -34)
@@ -18,15 +18,19 @@ polygon = PackedVector2Array(2, -17, 12, -8, 13, 5, 12, 10, 35, 9, 26, 15, 26, 2
 
 [node name="Player" type="RigidBody2D"]
 visibility_layer = 17
+z_index = 2
 collision_layer = 2
-collision_mask = 17
+collision_mask = 21
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_ivcda")
+max_contacts_reported = 1
+contact_monitor = true
 lock_rotation = true
 linear_damp = 5.453
 script = ExtResource("1_3exsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, 2)
 shape = SubResource("CircleShape2D_aoj1j")
 
 [node name="MainCamera" type="Camera2D" parent="." groups=["Camera"]]
@@ -44,6 +48,15 @@ visibility_layer = 17
 scale = Vector2(1.5, 2)
 texture = ExtResource("2_m2ljl")
 
+[node name="DeathIcon" type="Sprite2D" parent="Node2D"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.533333, 0, 0, 1)
+visibility_layer = 17
+z_index = 1
+scale = Vector2(1.5, 2)
+texture = ExtResource("2_m2ljl")
+
 [node name="Flashlight" parent="Node2D" instance=ExtResource("3_vn20y")]
 unique_name_in_owner = true
 position = Vector2(23, 19)
@@ -56,3 +69,5 @@ occluder_light_mask = 0
 [node name="SmallBlock2" type="LightOccluder2D" parent="Node2D"]
 occluder = SubResource("OccluderPolygon2D_xypbm")
 occluder_light_mask = 0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

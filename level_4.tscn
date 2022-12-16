@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://xshtlkim4g0t"]
+
+[ext_resource type="Script" path="res://level_3.gd" id="1_6pge5"]
+[ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_8gt44"]
+[ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_831ff"]
+[ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_km3sg"]
+[ext_resource type="PackedScene" uid="uid://c6h5npw8uysyc" path="res://ghost.tscn" id="5_6a0t3"]
+[ext_resource type="PackedScene" uid="uid://dmglrt7i10501" path="res://battery.tscn" id="6_d4bun"]
+
+[node name="Level3" type="Node2D"]
+visibility_layer = 17
+script = ExtResource("1_6pge5")
+
+[node name="Player" parent="." instance=ExtResource("2_8gt44")]
+position = Vector2(-52, 605)
+
+[node name="NavField" parent="." instance=ExtResource("3_831ff")]
+position = Vector2(-1024, -2048)
+
+[node name="Marker2D" parent="NavField" index="0"]
+position = Vector2(2052, 2884)
+
+[node name="House" parent="." instance=ExtResource("4_km3sg")]
+
+[node name="EmisTileMap" parent="House" index="1"]
+visible = false
+modulate = Color(0.0431373, 0, 0, 1)
+
+[node name="Ghost" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(413, -720)
+
+[node name="Ghost5" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(-652, -456)
+
+[node name="Ghost4" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(809, 584)
+
+[node name="Ghost3" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(677, -768)
+
+[node name="Ghost2" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(-561, -608)
+
+[node name="Ghost6" parent="." instance=ExtResource("5_6a0t3")]
+position = Vector2(-90, 129)
+
+[node name="Battery" parent="." instance=ExtResource("6_d4bun")]
+position = Vector2(-304, 448)
+
+[editable path="NavField"]
+[editable path="House"]

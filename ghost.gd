@@ -7,7 +7,7 @@ func _ready():
 
 func _physics_process(delta):
 	var light = get_node("/root/Main").light_at(self)
-	var speed = 200
+	var speed = 300
 	if light > 0.02:
 		var player_dir = global_position.direction_to(player.global_position)
 		# TODO: Find a dark spot

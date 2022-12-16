@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://flare.gd" id="1_wt703"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="3_xuxxx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ia3fq"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd4w5"]
 radius = 7.0
 height = 51.8134
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_maqgw"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xv8c5"]
 polygon = PackedVector2Array(-24.914, -5.98457, 24.9066, -6.01543, 24.914, 5.98457, -24.9066, 6.01543)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2uko"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q5by2"]
 emission_shape = 1
 emission_sphere_radius = 9.37
 particle_flag_disable_z = true
@@ -34,11 +34,17 @@ script = ExtResource("1_wt703")
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(100, 0, 0, 1)
+self_modulate = Color(100, 100, 100, 1)
 visibility_layer = 17
 z_index = -1
 position = Vector2(-0.0269169, 7.15256e-07)
 scale = Vector2(0.405213, 0.108251)
 texture = ExtResource("1_mwviw")
+
+[node name="1Px" type="Sprite2D" parent="."]
+modulate = Color(1, 0.337255, 0.2, 1)
+scale = Vector2(49.8207, 12)
+texture = ExtResource("3_xuxxx")
 
 [node name="Emis" type="Sprite2D" parent="."]
 modulate = Color(100, 0, 0, 1)
@@ -51,14 +57,14 @@ texture = ExtResource("3_xuxxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
-shape = SubResource("CapsuleShape2D_ia3fq")
+shape = SubResource("CapsuleShape2D_wd4w5")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 rotation = 0.000619442
-occluder = SubResource("OccluderPolygon2D_maqgw")
+occluder = SubResource("OccluderPolygon2D_xv8c5")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
 amount = 20
 trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_n2uko")
+process_material = SubResource("ParticleProcessMaterial_q5by2")

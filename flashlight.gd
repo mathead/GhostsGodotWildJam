@@ -11,3 +11,7 @@ func _process(delta):
 	var r = Vector2.RIGHT.rotated(get_parent().rotation)
 	$EmisPoly.modulate.g = (1+r.x) / 2
 	$EmisPoly.modulate.b = (1+r.y) / 2
+
+func set_charge(charge):
+	$EmisPoly.modulate.r = charge
+	visible = charge > 0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8gfi2krtq1ie"]
+
+[ext_resource type="Script" path="res://level_2.gd" id="1_qp7tt"]
+[ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_xteuq"]
+[ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_gki4g"]
+[ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_0nllj"]
+
+[node name="Level2" type="Node2D"]
+visibility_layer = 17
+script = ExtResource("1_qp7tt")
+
+[node name="Player" parent="." instance=ExtResource("2_xteuq")]
+position = Vector2(-52, 605)
+
+[node name="NavField" parent="." instance=ExtResource("3_gki4g")]
+position = Vector2(-1024, -2048)
+
+[node name="Marker2D" parent="NavField" index="0"]
+position = Vector2(2052, 2884)
+
+[node name="House" parent="." instance=ExtResource("4_0nllj")]
+
+[node name="EmisTileMap" parent="House" index="1"]
+modulate = Color(0.0431373, 0, 0, 1)
+
+[editable path="NavField"]
+[editable path="House"]

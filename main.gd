@@ -3,6 +3,16 @@ extends Node2D
 var lightmap: Image
 var lightning = 0.0
 var lightning_emis = 0.0
+var levels = [
+	preload("res://level_1.tscn"),
+	load("res://level_2.tscn"),
+	load("res://level_3.tscn"),
+	load("res://level_4.tscn"),
+	load("res://level_5_flares.tscn"),
+	load("res://level_pillars.tscn"),
+	]
+var cur_level = 5
+var level_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +36,8 @@ func _ready():
 	RenderingServer.viewport_set_active(%LastFrameBufferViewport.get_viewport_rid(), true)
 	RenderingServer.viewport_set_active(%GIViewport.get_viewport_rid(), false)
 	RenderingServer.viewport_set_active(%GIViewport.get_viewport_rid(), true)
+	
+	load_level()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -67,7 +79,6 @@ func _on_gfx_slider_value_changed(value):
 
 func _on_settings_button_toggled(button_pressed):
 	%Settings.visible = button_pressed
-	
 
 func _on_resolution_item_selected(index):
 	var b = Vector2(1280, 720)
@@ -82,3 +93,17 @@ func _on_resolution_item_selected(index):
 	%HUD.scale = Vector2.ONE / m
 	%GI.material.set_shader_parameter("u_emission_range", 1000 / m)	
 	get_tree().get_nodes_in_group("Camera")[0].zoom = Vector2(0.8, 0.8) / m
+	%MarginContainer.size = %MarginContainer.size
+
+func load_level():
+	if level_scene:
+		level_scene.free()
+	level_scene = levels[cur_level].instantiate()
+	%MainViewport.add_child(level_scene)
+
+func next_level():
+	cur_level += 1
+	load_level()
+
+func _on_reload_button_pressed():
+	load_level()
