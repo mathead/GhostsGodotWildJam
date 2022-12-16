@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://window.gd" id="1_rqqkc"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1ufbb"]
-polygon = PackedVector2Array(-2, -31, 2, -31, 2, 31, -2, 31)
+polygon = PackedVector2Array(-3, -32, 3, -32, 3, 32, -3, 32)
 
-[node name="Window" type="Node2D"]
+[node name="Window" type="Node2D" groups=["windows"]]
 visibility_layer = 17
 script = ExtResource("1_rqqkc")
 

@@ -136,7 +136,7 @@ offset_bottom = 31.0
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
-text = ">"
+text = "x"
 
 [node name="Settings" type="VBoxContainer" parent="HUD/VBoxContainer"]
 unique_name_in_owner = true

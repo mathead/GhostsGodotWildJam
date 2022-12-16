@@ -1,6 +1,8 @@
 extends Node2D
 
 var lightmap: Image
+var lightning = 0.0
+var lightning_emis = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +36,25 @@ func _process(delta):
 	%FPS.text = "FPS " + str(Engine.get_frames_per_second())
 	lightmap = %GIViewport.get_texture().get_image() # TODO: shader that gets max
 #	lightmap.generate_mipmaps()  shrink_x2
+
+func _physics_process(delta):
+	var color = Color.WHITE
+	if lightning > 0:
+		if randf() < 0.1:
+			lightning_emis = 1.0 + randf()
+		lightning -= delta
+		color = Color.WHITE * lightning
+	else:
+		color = Color("4a6161")
+		if randf() < 0.005:
+			lightning_emis = 1.5 + randf()
+			lightning = 0.5 + randf() * 0.3
 		
+	lightning_emis = lerp(lightning_emis, 0.02, 0.5)
+	for window in get_tree().get_nodes_in_group("windows"):
+		window.Icon.modulate = color
+		window.Emis.modulate.r = lightning_emis
+
 func light_at(node):
 	var pos = node.get_global_transform_with_canvas().origin
 	if not Rect2i(Vector2.ZERO, lightmap.get_size()).has_point(pos):

@@ -45,6 +45,7 @@ scale = Vector2(1.5, 2)
 texture = ExtResource("2_m2ljl")
 
 [node name="Flashlight" parent="Node2D" instance=ExtResource("3_vn20y")]
+unique_name_in_owner = true
 position = Vector2(23, 19)
 
 [node name="SmallBlock" type="LightOccluder2D" parent="Node2D"]
