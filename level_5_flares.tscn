@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbtyk63rg2ikm"]
+[gd_scene load_steps=7 format=3 uid="uid://cbtyk63rg2ikm"]
 
+[ext_resource type="Script" path="res://level_5_flares.gd" id="1_2cbr7"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_e1rvk"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_0sbgc"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_jiwrt"]
 [ext_resource type="PackedScene" uid="uid://c6h5npw8uysyc" path="res://ghost.tscn" id="5_gvjjf"]
+[ext_resource type="PackedScene" uid="uid://b25ou6kv7oag" path="res://flare_pickup.tscn" id="6_q67pb"]
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
+script = ExtResource("1_2cbr7")
 
 [node name="Player" parent="." instance=ExtResource("2_e1rvk")]
 position = Vector2(-52, 605)
-num_flares = 10
 flashlight_on = false
 has_flashlight = false
 
@@ -29,20 +31,37 @@ modulate = Color(0.0431373, 0, 0, 1)
 [node name="Ghost" parent="." instance=ExtResource("5_gvjjf")]
 position = Vector2(413, -720)
 
-[node name="Ghost5" parent="." instance=ExtResource("5_gvjjf")]
-position = Vector2(-652, -456)
-
 [node name="Ghost4" parent="." instance=ExtResource("5_gvjjf")]
 position = Vector2(809, 584)
 
 [node name="Ghost3" parent="." instance=ExtResource("5_gvjjf")]
-position = Vector2(677, -768)
+position = Vector2(848, 6)
 
 [node name="Ghost2" parent="." instance=ExtResource("5_gvjjf")]
 position = Vector2(-561, -608)
 
 [node name="Ghost6" parent="." instance=ExtResource("5_gvjjf")]
-position = Vector2(-90, 129)
+position = Vector2(413, -34)
+
+[node name="Flare" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(-218, 526)
+
+[node name="Flare2" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(-577, 72)
+
+[node name="Flare3" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(959, -34)
+
+[node name="Flare4" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(953, -608)
+
+[node name="Flare5" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(575, 750)
+
+[node name="Flare6" parent="." instance=ExtResource("6_q67pb")]
+position = Vector2(-683, -356)
+
+[connection signal="picked" from="Flare" to="." method="_on_flare_picked"]
 
 [editable path="NavField"]
 [editable path="House"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4lplav4uj6av"]
+[gd_scene load_steps=8 format=3 uid="uid://c4lplav4uj6av"]
 
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="1_mwfww"]
+[ext_resource type="Script" path="res://level_maze.gd" id="1_ow5av"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="2_qlesk"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="3_ojuk8"]
 [ext_resource type="PackedScene" uid="uid://c6h5npw8uysyc" path="res://ghost.tscn" id="4_gq14q"]
@@ -9,6 +10,7 @@
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
+script = ExtResource("1_ow5av")
 
 [node name="Player" parent="." instance=ExtResource("1_mwfww")]
 position = Vector2(-52, 605)
@@ -70,7 +72,7 @@ visible = false
 [node name="Door5" parent="House/Doors" index="4"]
 visible = false
 
-[node name="NextLevel" parent="House" index="4"]
+[node name="NextLevel" parent="House" index="5"]
 position = Vector2(-454, -3890)
 
 [node name="Ghost" parent="." instance=ExtResource("4_gq14q")]

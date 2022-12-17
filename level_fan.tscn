@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://pbcl4h8b8raf"]
+[gd_scene load_steps=7 format=3 uid="uid://pbcl4h8b8raf"]
 
+[ext_resource type="Script" path="res://level_fan.gd" id="1_qhaaj"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_k1oqi"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_y4ekk"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_lvi2f"]
@@ -8,6 +9,7 @@
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
+script = ExtResource("1_qhaaj")
 
 [node name="Player" parent="." instance=ExtResource("2_k1oqi")]
 position = Vector2(-52, 605)
@@ -68,7 +70,7 @@ visible = false
 [node name="Door5" parent="House/Doors" index="4"]
 visible = false
 
-[node name="NextLevel" parent="House" index="4"]
+[node name="NextLevel" parent="House" index="5"]
 position = Vector2(-453, -3891)
 
 [node name="Ghost" parent="." instance=ExtResource("5_wdvri")]

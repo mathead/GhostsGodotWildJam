@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b25ou6kv7oag"]
+[gd_scene load_steps=9 format=3 uid="uid://cya2y1kpvou8j"]
 
-[ext_resource type="Script" path="res://flare_pickup.gd" id="1_l1acd"]
-[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="2_uixk3"]
-[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="3_38tk5"]
+[ext_resource type="Script" path="res://flashlight_pickup.gd" id="1_1bv47"]
+[ext_resource type="Texture2D" uid="uid://dwgr0rlyi7nst" path="res://images/survivor1_gun.png" id="2_k2acm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2d2y"]
 radius = 64.0078
@@ -29,13 +28,25 @@ _data = {
 "New Anim": SubResource("Animation_egmor")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4l63"]
+atlas = ExtResource("2_k2acm")
+region = Rect2(32, 27, 19, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c25kl"]
+animations = [{
+"frames": [SubResource("AtlasTexture_h4l63")],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fddwg"]
-polygon = PackedVector2Array(-24.914, -5.98457, 24.9066, -6.01543, 24.914, 5.98457, -24.9066, 6.01543)
+polygon = PackedVector2Array(-25.349, -9.39489, 24.0479, -10.0561, 23.1511, 9.85286, -25.4582, 9.89132)
 
 [node name="Flare" type="Node2D"]
 rotation = 0.668461
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_l1acd")
+script = ExtResource("1_1bv47")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -51,21 +62,15 @@ libraries = {
 }
 
 [node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(1.992, 1.992)
+scale = Vector2(3, 3)
 
-[node name="Icon" type="Sprite2D" parent="Node2D"]
-modulate = Color(100, 0, 0, 1)
-self_modulate = Color(100, 100, 100, 1)
+[node name="Icon" type="AnimatedSprite2D" parent="Node2D"]
+modulate = Color(2, 2, 2, 1)
 visibility_layer = 17
 z_index = -1
 position = Vector2(-0.0269169, 7.14324e-07)
-scale = Vector2(0.405213, 0.108251)
-texture = ExtResource("2_uixk3")
-
-[node name="1Px" type="Sprite2D" parent="Node2D"]
-modulate = Color(1, 0.337255, 0.2, 1)
-scale = Vector2(49.8207, 12)
-texture = ExtResource("3_38tk5")
+scale = Vector2(2.83442, 2.83442)
+frames = SubResource("SpriteFrames_c25kl")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="Node2D"]
 rotation = 0.000619411

@@ -64,6 +64,7 @@ func _on_body_entered(body):
 	if dead: return
 	if body.is_in_group("ghosts"):
 		dead = true
+		get_node("/root/Main").set_text("[shake rate=5 level=10][color=red]YOU DIED[/color][/shake]")
 		%DeathIcon.visible = true
 		await get_tree().create_timer(3).timeout
 		get_node("/root/Main").load_level()

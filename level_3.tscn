@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4kyp2k7iggjj"]
+[gd_scene load_steps=7 format=3 uid="uid://c4kyp2k7iggjj"]
 
 [ext_resource type="Script" path="res://level_3.gd" id="1_yct3h"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="3_0g46g"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="3_cnwc0"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="4_36vm2"]
 [ext_resource type="PackedScene" uid="uid://c6h5npw8uysyc" path="res://ghost.tscn" id="5_4tqqs"]
+[ext_resource type="PackedScene" uid="uid://dmglrt7i10501" path="res://battery.tscn" id="6_nl5r3"]
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
@@ -26,7 +27,13 @@ visible = false
 modulate = Color(0.0431373, 0, 0, 1)
 
 [node name="Ghost" parent="." instance=ExtResource("5_4tqqs")]
-position = Vector2(413, -720)
+position = Vector2(-574, -796)
+
+[node name="Battery" parent="." instance=ExtResource("6_nl5r3")]
+position = Vector2(-572, 72)
+
+[node name="Battery2" parent="." instance=ExtResource("6_nl5r3")]
+position = Vector2(646, -791)
 
 [editable path="NavField"]
 [editable path="House"]

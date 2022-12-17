@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xshtlkim4g0t"]
 
-[ext_resource type="Script" path="res://level_3.gd" id="1_6pge5"]
+[ext_resource type="Script" path="res://level_4.gd" id="1_4hw4u"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_8gt44"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_831ff"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_km3sg"]
@@ -9,7 +9,7 @@
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
-script = ExtResource("1_6pge5")
+script = ExtResource("1_4hw4u")
 
 [node name="Player" parent="." instance=ExtResource("2_8gt44")]
 position = Vector2(-52, 605)
@@ -45,7 +45,13 @@ position = Vector2(-561, -608)
 position = Vector2(-90, 129)
 
 [node name="Battery" parent="." instance=ExtResource("6_d4bun")]
-position = Vector2(-304, 448)
+position = Vector2(-574, 61)
+
+[node name="Battery2" parent="." instance=ExtResource("6_d4bun")]
+position = Vector2(898, -596)
+
+[node name="Battery3" parent="." instance=ExtResource("6_d4bun")]
+position = Vector2(942, -25)
 
 [editable path="NavField"]
 [editable path="House"]

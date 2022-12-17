@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://8gfi2krtq1ie"]
+[gd_scene load_steps=8 format=3 uid="uid://8gfi2krtq1ie"]
 
 [ext_resource type="Script" path="res://level_2.gd" id="1_qp7tt"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_xteuq"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_gki4g"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_0nllj"]
+[ext_resource type="PackedScene" uid="uid://cya2y1kpvou8j" path="res://flashlight_pickup.tscn" id="5_g5hvd"]
+[ext_resource type="PackedScene" uid="uid://dmglrt7i10501" path="res://battery.tscn" id="6_rnwgd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bokvw"]
+size = Vector2(166, 58)
 
 [node name="Level2" type="Node2D"]
 visibility_layer = 17
@@ -26,6 +31,25 @@ position = Vector2(2052, 2884)
 
 [node name="EmisTileMap" parent="House" index="1"]
 modulate = Color(0.0431373, 0, 0, 1)
+
+[node name="Flashlight" parent="." instance=ExtResource("5_g5hvd")]
+position = Vector2(851, 566)
+
+[node name="Battery" parent="." instance=ExtResource("6_rnwgd")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-566, 70)
+
+[node name="Block" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(-574, -923)
+shape = SubResource("RectangleShape2D_bokvw")
+
+[connection signal="picked" from="Flashlight" to="." method="_on_flashlight_picked"]
+[connection signal="picked" from="Battery" to="." method="_on_battery_picked"]
 
 [editable path="NavField"]
 [editable path="House"]

@@ -9,12 +9,12 @@ func _ready():
 func _physics_process(delta):
 	var light = get_node("/root/Main").light_at(self)
 	var speed = 300
-	if light > 0.02:
+	if light > 0.15:
 		var player_dir = global_position.direction_to(player.global_position)
 		# TODO: Find a dark spot
 		%Agent.target_location = global_position - global_position.direction_to(player.global_position)*500
 #		velocity += -player_dir * delta * 1000 * light
-		apply_central_impulse(-player_dir * delta * 2000 * light)
+		apply_central_impulse(-player_dir * delta * 500 * light)
 		$Icon.modulate = Color.BLACK
 		speed *= 2
 	else:

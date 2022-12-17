@@ -14,9 +14,11 @@ var levels = [
 	load("res://level_many_ghosts.tscn"),
 	load("res://level_maze.tscn"),
 	]
-var cur_level = 2
+var cur_level = 0
 var level_scene
 var m = 1 # resolution multiplier
+var text_start = 0
+var text = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,6 +54,10 @@ func _process(delta):
 	%FPS.text = "FPS " + str(Engine.get_frames_per_second())
 	lightmap = %GIViewport.get_texture().get_image() # TODO: shader that gets max
 #	lightmap.generate_mipmaps()  shrink_x2
+	
+	text_start += delta
+	%Text.text = "[center][fade start=" + str(int(round(text_start*30))) + " length=10]" + text + "[/fade][/center]"
+	%Text.modulate.a = min(0.75, len(text)/7 - text_start + 1)
 
 func _physics_process(delta):
 	var color = Color.WHITE
@@ -75,7 +81,7 @@ func light_at(node):
 	var pos = node.get_global_transform_with_canvas().origin
 	if not Rect2i(Vector2.ZERO, lightmap.get_size()).has_point(pos):
 		return 0.01
-	return lightmap.get_pixelv(pos).get_luminance()
+	return lightmap.get_pixelv(pos).linear_to_srgb().get_luminance()
 
 
 func _on_gfx_slider_value_changed(value):
@@ -112,3 +118,7 @@ func next_level():
 
 func _on_reload_button_pressed():
 	load_level()
+	
+func set_text(t):
+	text = t
+	text_start = -1
