@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://deve4aviylmh6"]
+[gd_scene load_steps=19 format=3 uid="uid://deve4aviylmh6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_i2qk7"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_vdmwx"]
+[ext_resource type="Texture2D" uid="uid://c43pmxei3wg8o" path="res://1x/Asset 5.png" id="5_5x372"]
 [ext_resource type="Shader" path="res://draw_gi.gdshader" id="5_ni6dk"]
 [ext_resource type="Shader" path="res://gi.gdshader" id="5_oymd0"]
 [ext_resource type="Shader" path="res://last_frame_buffer.gdshader" id="6_8rd41"]
@@ -42,6 +43,16 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sw8da"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e83pn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dqkwp"]
+texture = ExtResource("5_5x372")
+margin_top = 1.0
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 32, 11)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xipw4"]
 noise_type = 0
@@ -159,13 +170,17 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 179.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="SettingsButton" type="Button" parent="HUD/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
+offset_right = 300.0
+offset_bottom = 31.0
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
@@ -174,39 +189,56 @@ text = "x"
 [node name="Settings" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+offset_top = 35.0
+offset_right = 300.0
+offset_bottom = 169.0
 
 [node name="ReloadButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+offset_right = 300.0
+offset_bottom = 31.0
 focus_mode = 0
 text = "Reload Level"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 300.0
+offset_bottom = 65.0
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
-layout_mode = 2
+offset_top = 2.0
+offset_right = 137.0
+offset_bottom = 28.0
 text = "Graphics Quality :"
 
 [node name="GFXSlider" type="HSlider" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
 custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
+anchors_preset = -1
+offset_left = 141.0
+offset_right = 291.0
+offset_bottom = 30.0
+grow_horizontal = 0
 focus_mode = 0
 min_value = 8.0
 max_value = 128.0
 value = 80.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+offset_top = 69.0
+offset_right = 300.0
+offset_bottom = 104.0
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
-layout_mode = 2
+offset_top = 4.0
+offset_right = 87.0
+offset_bottom = 30.0
 text = "Resolution:"
 
 [node name="Resolution" type="ItemList" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
+offset_left = 91.0
+offset_right = 271.0
+offset_bottom = 35.0
 focus_mode = 0
 auto_height = true
 item_count = 3
@@ -219,17 +251,26 @@ item_2/text = "High"
 
 [node name="FPS" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings"]
 unique_name_in_owner = true
-layout_mode = 2
+offset_top = 108.0
+offset_right = 300.0
+offset_bottom = 134.0
 text = "asdfds"
 
-[node name="Battery" type="ProgressBar" parent="HUD"]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.372549)
-custom_minimum_size = Vector2(30, 200)
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 offset_left = 10.0
 offset_top = 510.0
 offset_right = 40.0
 offset_bottom = 710.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Battery" type="ProgressBar" parent="HUD/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.372549)
+custom_minimum_size = Vector2(30, 200)
+offset_right = 30.0
+offset_bottom = 200.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
@@ -238,6 +279,31 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0utbb")
 max_value = 1.0
 step = 0.0
 value = 0.7
+fill_mode = 3
+show_percentage = false
+
+[node name="VSeparator" type="VSeparator" parent="HUD/HBoxContainer"]
+offset_left = 34.0
+offset_right = 39.0
+offset_bottom = 200.0
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sw8da")
+
+[node name="Flares" type="ProgressBar" parent="HUD/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.372549)
+custom_minimum_size = Vector2(30, 200)
+offset_left = 43.0
+offset_right = 73.0
+offset_bottom = 200.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/outline_size = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_e83pn")
+theme_override_styles/fill = SubResource("StyleBoxTexture_dqkwp")
+max_value = 20.0
+step = 1.0
+value = 5.0
 fill_mode = 3
 show_percentage = false
 

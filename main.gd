@@ -10,9 +10,13 @@ var levels = [
 	load("res://level_4.tscn"),
 	load("res://level_5_flares.tscn"),
 	load("res://level_pillars.tscn"),
+	load("res://level_fan.tscn"),
+	load("res://level_many_ghosts.tscn"),
+	load("res://level_maze.tscn"),
 	]
-var cur_level = 5
+var cur_level = 2
 var level_scene
+var m = 1 # resolution multiplier
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -89,9 +93,9 @@ func _on_resolution_item_selected(index):
 	%LastFrameBufferViewport.size = r
 	%MainViewport.size = r
 	get_viewport().content_scale_size = r
-	var m = (2**(2-index))
+	m = (2**(2-index))
 	%HUD.scale = Vector2.ONE / m
-	%GI.material.set_shader_parameter("u_emission_range", 1000 / m)	
+	%GI.material.set_shader_parameter("u_emission_range", 1000.0 / m)	
 	get_tree().get_nodes_in_group("Camera")[0].zoom = Vector2(0.8, 0.8) / m
 	%MarginContainer.size = %MarginContainer.size
 
@@ -100,6 +104,7 @@ func load_level():
 		level_scene.free()
 	level_scene = levels[cur_level].instantiate()
 	%MainViewport.add_child(level_scene)
+	get_tree().get_nodes_in_group("Camera")[0].zoom = Vector2(0.8, 0.8) / m
 
 func next_level():
 	cur_level += 1

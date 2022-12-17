@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6h5npw8uysyc"]
+[gd_scene load_steps=9 format=3 uid="uid://c6h5npw8uysyc"]
 
 [ext_resource type="Script" path="res://ghost.gd" id="1_lfx8r"]
-[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="1_ralwv"]
+[ext_resource type="Texture2D" uid="uid://dpntae1lcgh4b" path="res://2x/Asset 3@2x.png" id="2_0p5gr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_da12e"]
 friction = 0.08
@@ -13,6 +13,35 @@ radius = 23.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y6t2v"]
 polygon = PackedVector2Array(-33, 0, -32, -11, -25, -22, -15, -30, 0, -33, 11, -31, 25, -21, 31, -12, 33, 0, 31, 13, 24, 23, 13, 30, 0, 33, -10, 32, -21, 25, -30, 14)
 
+[sub_resource type="Curve" id="Curve_x41pm"]
+_data = [Vector2(0, 0), 0.0, 15.2025, 0, 0, Vector2(0.102473, 1), -0.197902, -0.197902, 0, 0, Vector2(1, 0.0090909), -4.46841, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l04ag"]
+curve = SubResource("Curve_x41pm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ttdu"]
+emission_shape = 1
+emission_sphere_radius = 58.45
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = -85.29
+angular_velocity_max = 85.29
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_l04ag")
+color = Color(0.0431373, 0.0431373, 0.109804, 0.87451)
+hue_variation_max = 0.11
+turbulence_noise_strength = 0.0
+
 [node name="Ghost" type="RigidBody2D" groups=["ghosts"]]
 z_index = 5
 collision_layer = 4
@@ -23,18 +52,24 @@ linear_damp = 2.0
 script = ExtResource("1_lfx8r")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.515625, 0.515625)
-texture = ExtResource("1_ralwv")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_0p5gr")
 
 [node name="Agent" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 avoidance_enabled = true
 radius = 50.0
-max_speed = 1000.0
+max_speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_awpkm")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(0.9, 0.9)
 occluder = SubResource("OccluderPolygon2D_y6t2v")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_5ttdu")
+texture = ExtResource("2_0p5gr")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddypefpd2egi4"]
+
+[ext_resource type="Script" path="res://next_level.gd" id="1_mnron"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea8jv"]
+size = Vector2(291, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xo70m"]
+size = Vector2(64, 194)
+
+[node name="NextLevel" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mnron")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(135.5, 25.5)
+shape = SubResource("RectangleShape2D_ea8jv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(22, 87)
+shape = SubResource("RectangleShape2D_xo70m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(249, 88)
+shape = SubResource("RectangleShape2D_xo70m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

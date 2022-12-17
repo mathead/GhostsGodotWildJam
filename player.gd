@@ -4,18 +4,23 @@ var flare_scene = preload("res://flare.tscn")
 const SPEED = 10000.0
 @export var charge = 1.0
 @export var discharge_secs = 30.0
+@export var num_flares = 0
 @onready var charge_bar = get_node("/root/Main/%Battery")
+@onready var flare_bar = get_node("/root/Main/%Flares")
 var dead = false
 @export var flashlight_on = true
+@export var has_flashlight = true
 
 func _process(delta):
-	if flashlight_on:
+	if flashlight_on and has_flashlight:
 		charge -= delta * (1/discharge_secs)
 		charge = max(0, charge)
 		charge_bar.value = charge
 		%Flashlight.set_charge(charge)
 	else:
 		%Flashlight.set_charge(0)
+	charge_bar.visible = has_flashlight
+	flare_bar.value = num_flares
 
 func _physics_process(delta):
 	if dead:
@@ -38,19 +43,22 @@ func _physics_process(delta):
 
 func _unhandled_input(event):
 	if dead: return
-	if event.is_action_pressed("rightclick"):
+	if event.is_action_pressed("rightclick") and num_flares > 0:
 		var flare: RigidBody2D = flare_scene.instantiate()
 		get_parent().add_child(flare)
 		flare.global_position = global_position
 		flare.apply_central_impulse((get_global_mouse_position()-global_position)*4.6)
 		flare.angular_velocity = randf() * 30 - 30
+		num_flares -= 1
 		
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and has_flashlight:
 		flashlight_on = not flashlight_on
 		
 func on_battery_picked(c):
 	charge = min(1, charge+c)
 
+func on_flare_picked(n):
+	num_flares += n
 
 func _on_body_entered(body):
 	if dead: return

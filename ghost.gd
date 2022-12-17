@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @onready var player = get_node("../Player")
+@export var recalculate_rate = 0.2
 
 func _ready():
 	%Agent.connect("velocity_computed", velocity_computed)
@@ -13,11 +14,12 @@ func _physics_process(delta):
 		# TODO: Find a dark spot
 		%Agent.target_location = global_position - global_position.direction_to(player.global_position)*500
 #		velocity += -player_dir * delta * 1000 * light
-		apply_central_impulse(-player_dir * delta * 1000 * light)
+		apply_central_impulse(-player_dir * delta * 2000 * light)
 		$Icon.modulate = Color.BLACK
 		speed *= 2
 	else:
-		%Agent.target_location = player.global_position
+		if randf() < recalculate_rate:
+			%Agent.target_location = player.global_position
 		$Icon.modulate = Color.BLACK
 
 #	apply_central_impulse(global_position.direction_to(%Agent.get_next_location())*delta*speed)

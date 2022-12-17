@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuaat5stkijy0"]
+
+[ext_resource type="Script" path="res://tv.gd" id="1_lnnqp"]
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_kib6y"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_667b8"]
+polygon = PackedVector2Array(-18, -1, 18, -1, 18, 2, -18, 2)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gwi2n"]
+polygon = PackedVector2Array(-19, 0, 19, 0, 19, 2, -19, 2)
+
+[node name="TV" type="Node2D"]
+visibility_layer = 17
+script = ExtResource("1_lnnqp")
+
+[node name="1Px" type="Sprite2D" parent="."]
+position = Vector2(5.51343e-07, 0.5)
+scale = Vector2(36, 3)
+texture = ExtResource("2_kib6y")
+
+[node name="Emis" type="Sprite2D" parent="."]
+visibility_layer = 16
+position = Vector2(5.51343e-07, 0.5)
+scale = Vector2(36, 3)
+texture = ExtResource("2_kib6y")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_667b8")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(0, -4)
+occluder = SubResource("OccluderPolygon2D_gwi2n")

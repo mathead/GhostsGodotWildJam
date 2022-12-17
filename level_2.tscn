@@ -11,6 +11,10 @@ script = ExtResource("1_qp7tt")
 
 [node name="Player" parent="." instance=ExtResource("2_xteuq")]
 position = Vector2(-52, 605)
+charge = 0.1
+discharge_secs = 90.0
+flashlight_on = false
+has_flashlight = false
 
 [node name="NavField" parent="." instance=ExtResource("3_gki4g")]
 position = Vector2(-1024, -2048)

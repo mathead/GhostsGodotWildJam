@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://b25ou6kv7oag"]
+
+[ext_resource type="Script" path="res://flare_pickup.gd" id="1_l1acd"]
+[ext_resource type="Texture2D" uid="uid://d1lxcdg2sn8lr" path="res://icon.svg" id="2_uixk3"]
+[ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="3_38tk5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2d2y"]
+radius = 64.0078
+
+[sub_resource type="Animation" id="Animation_egmor"]
+resource_name = "New Anim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a6htl"]
+_data = {
+"New Anim": SubResource("Animation_egmor")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fddwg"]
+polygon = PackedVector2Array(-24.914, -5.98457, 24.9066, -6.01543, 24.914, 5.98457, -24.9066, 6.01543)
+
+[node name="Flare" type="Node2D"]
+rotation = 0.668461
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_l1acd")
+num = 3
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_t2d2y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+libraries = {
+"": SubResource("AnimationLibrary_a6htl")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2(1.992, 1.992)
+
+[node name="Icon" type="Sprite2D" parent="Node2D"]
+modulate = Color(100, 0, 0, 1)
+self_modulate = Color(100, 100, 100, 1)
+visibility_layer = 17
+z_index = -1
+position = Vector2(-0.0269169, 7.14324e-07)
+scale = Vector2(0.405213, 0.108251)
+texture = ExtResource("2_uixk3")
+
+[node name="1Px" type="Sprite2D" parent="Node2D"]
+modulate = Color(1, 0.337255, 0.2, 1)
+scale = Vector2(49.8207, 12)
+texture = ExtResource("3_38tk5")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Node2D"]
+rotation = 0.000619411
+occluder = SubResource("OccluderPolygon2D_fddwg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

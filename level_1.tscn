@@ -9,6 +9,8 @@ visibility_layer = 17
 
 [node name="Player" parent="." instance=ExtResource("2_y74dk")]
 position = Vector2(-52, 605)
+flashlight_on = false
+has_flashlight = false
 
 [node name="NavField" parent="." instance=ExtResource("6_ji15n")]
 position = Vector2(-1024, -2048)

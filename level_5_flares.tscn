@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbtyk63rg2ikm"]
+[gd_scene load_steps=5 format=3 uid="uid://cbtyk63rg2ikm"]
 
-[ext_resource type="Script" path="res://level_3.gd" id="1_8fj51"]
 [ext_resource type="PackedScene" uid="uid://bj46g0w7e84us" path="res://player.tscn" id="2_e1rvk"]
 [ext_resource type="PackedScene" uid="uid://dty7qqpakb4la" path="res://nav_field.tscn" id="3_0sbgc"]
 [ext_resource type="PackedScene" uid="uid://daxa7o5mh4jdn" path="res://house.tscn" id="4_jiwrt"]
@@ -8,10 +7,12 @@
 
 [node name="Level3" type="Node2D"]
 visibility_layer = 17
-script = ExtResource("1_8fj51")
 
 [node name="Player" parent="." instance=ExtResource("2_e1rvk")]
 position = Vector2(-52, 605)
+num_flares = 10
+flashlight_on = false
+has_flashlight = false
 
 [node name="NavField" parent="." instance=ExtResource("3_0sbgc")]
 position = Vector2(-1024, -2048)
