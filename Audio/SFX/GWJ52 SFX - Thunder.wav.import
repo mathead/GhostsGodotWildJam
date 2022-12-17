@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwrnhsb027cmc"
+path="res://.godot/imported/GWJ52 SFX - Thunder.wav-d19507f77d1ae96108b735ecc3d17c74.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/GWJ52 SFX - Thunder.wav"
+dest_files=["res://.godot/imported/GWJ52 SFX - Thunder.wav-d19507f77d1ae96108b735ecc3d17c74.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
