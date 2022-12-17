@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://flare.gd" id="1_wt703"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="3_xuxxx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8w4b"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ksl1y"]
 radius = 7.0
 height = 51.8134
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o5ikv"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_asgr1"]
 polygon = PackedVector2Array(-24.914, -5.98457, 24.9066, -6.01543, 24.914, 5.98457, -24.9066, 6.01543)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ueqib"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_io17l"]
 emission_shape = 1
 emission_sphere_radius = 9.37
 particle_flag_disable_z = true
@@ -57,14 +57,14 @@ texture = ExtResource("3_xuxxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.57079
-shape = SubResource("CapsuleShape2D_e8w4b")
+shape = SubResource("CapsuleShape2D_ksl1y")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 rotation = 0.000619442
-occluder = SubResource("OccluderPolygon2D_o5ikv")
+occluder = SubResource("OccluderPolygon2D_asgr1")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 visible = false
 amount = 20
 trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_ueqib")
+process_material = SubResource("ParticleProcessMaterial_io17l")

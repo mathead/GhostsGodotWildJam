@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcl64dnw0s1bj"
+path="res://.godot/imported/GWJ52 SFX - door.wav-524a7c1843c12d9681d37d929ed18a1c.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/GWJ52 SFX - door.wav"
+dest_files=["res://.godot/imported/GWJ52 SFX - door.wav-524a7c1843c12d9681d37d929ed18a1c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

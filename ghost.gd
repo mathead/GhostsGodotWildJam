@@ -5,6 +5,8 @@ extends RigidBody2D
 
 func _ready():
 	%Agent.connect("velocity_computed", velocity_computed)
+	$GhostSFX.pitch_scale = randf_range (0.8,1.2)
+	$GhostSFX.play()
 
 func _physics_process(delta):
 	var light = get_node("/root/Main").light_at(self)
@@ -17,6 +19,8 @@ func _physics_process(delta):
 		apply_central_impulse(-player_dir * delta * 2000 * light)
 		$Icon.modulate = Color.BLACK
 		speed *= 2
+		
+		
 	else:
 		if randf() < recalculate_rate:
 			%Agent.target_location = player.global_position

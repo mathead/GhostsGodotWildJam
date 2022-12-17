@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj46g0w7e84us"]
+[gd_scene load_steps=10 format=3 uid="uid://bj46g0w7e84us"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_3exsh"]
 [ext_resource type="Texture2D" uid="uid://dwgr0rlyi7nst" path="res://images/survivor1_gun.png" id="2_m2ljl"]
 [ext_resource type="PackedScene" uid="uid://dx0jfxifar8wq" path="res://flashlight.tscn" id="3_vn20y"]
+[ext_resource type="AudioStream" uid="uid://cohtwwpley0w3" path="res://Audio/SFX/GWJ52 SFX - playerDeath.wav" id="4_lh11j"]
+[ext_resource type="AudioStream" uid="uid://cttvs47uj556s" path="res://Audio/SFX/LDJ22_SFX_03_step_01.wav" id="5_bnwbj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivcda"]
 friction = 0.09
@@ -68,5 +70,21 @@ occluder_light_mask = 0
 [node name="SmallBlock2" type="LightOccluder2D" parent="Node2D"]
 occluder = SubResource("OccluderPolygon2D_xypbm")
 occluder_light_mask = 0
+
+[node name="SFXDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lh11j")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.314
+one_shot = true
+
+[node name="SFXFootsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bnwbj")
+volume_db = -15.633
+pitch_scale = 0.66
+mix_target = 2
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
