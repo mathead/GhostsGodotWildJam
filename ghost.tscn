@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6h5npw8uysyc"]
+[gd_scene load_steps=10 format=3 uid="uid://c6h5npw8uysyc"]
 
 [ext_resource type="Script" path="res://ghost.gd" id="1_lfx8r"]
 [ext_resource type="Texture2D" uid="uid://dpntae1lcgh4b" path="res://2x/Asset 3@2x.png" id="2_0p5gr"]
+[ext_resource type="AudioStream" uid="uid://b1e6igddbwd7b" path="res://Audio/SFX/Godot Wild Jam 52 SFX ghost loop1.ogg" id="3_lxm84"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_da12e"]
 friction = 0.08
@@ -73,3 +74,9 @@ amount = 100
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_5ttdu")
 texture = ExtResource("2_0p5gr")
+
+[node name="GhostSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lxm84")
+max_distance = 500.0
+attenuation = 0.870552
+bus = &"SFX"

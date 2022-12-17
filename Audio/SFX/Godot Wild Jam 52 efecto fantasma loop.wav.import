@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c34r3fnqyv4us"
+path="res://.godot/imported/Godot Wild Jam 52 efecto fantasma loop.wav-33aa45bcd52f63410b39a1504bcd4006.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Godot Wild Jam 52 efecto fantasma loop.wav"
+dest_files=["res://.godot/imported/Godot Wild Jam 52 efecto fantasma loop.wav-33aa45bcd52f63410b39a1504bcd4006.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

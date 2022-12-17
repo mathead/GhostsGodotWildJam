@@ -104,6 +104,7 @@ func _on_resolution_item_selected(index):
 	%GI.material.set_shader_parameter("u_emission_range", 1000.0 / m)	
 	get_tree().get_nodes_in_group("Camera")[0].zoom = Vector2(0.8, 0.8) / m
 	%MarginContainer.size = %MarginContainer.size
+	
 
 func load_level():
 	if level_scene:

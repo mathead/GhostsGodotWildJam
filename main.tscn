@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://deve4aviylmh6"]
+[gd_scene load_steps=21 format=3 uid="uid://deve4aviylmh6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_i2qk7"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_vdmwx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://gi.gdshader" id="5_oymd0"]
 [ext_resource type="Shader" path="res://last_frame_buffer.gdshader" id="6_8rd41"]
 [ext_resource type="FontFile" uid="uid://pekwxkn6c024" path="res://fff-forward.regular.ttf" id="6_cg0vq"]
+[ext_resource type="AudioStream" uid="uid://blwqtsqabe17n" path="res://Audio/Music/GWJ52 - BGM - v01-full v2.ogg" id="7_f08nv"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34mb1"]
 resource_local_to_scene = true
@@ -337,6 +338,13 @@ material = SubResource("CanvasItemMaterial_3ypmn")
 position = Vector2(392, 523)
 scale = Vector2(5000, 5000)
 texture = ExtResource("2_vdmwx")
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("7_f08nv")
+volume_db = -6.0
+autoplay = true
 
 [connection signal="toggled" from="HUD/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_toggled"]
 [connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Settings/ReloadButton" to="." method="_on_reload_button_pressed"]

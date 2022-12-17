@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b1e6igddbwd7b"
+path="res://.godot/imported/Godot Wild Jam 52 SFX ghost loop1.ogg-5ab712407bd74c628184f357ef845f62.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/SFX/Godot Wild Jam 52 SFX ghost loop1.ogg"
+dest_files=["res://.godot/imported/Godot Wild Jam 52 SFX ghost loop1.ogg-5ab712407bd74c628184f357ef845f62.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

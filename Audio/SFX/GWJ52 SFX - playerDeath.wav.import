@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cohtwwpley0w3"
+path="res://.godot/imported/GWJ52 SFX - playerDeath.wav-9f6ec310ab1d6f7e9aec698c8a40ca75.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/GWJ52 SFX - playerDeath.wav"
+dest_files=["res://.godot/imported/GWJ52 SFX - playerDeath.wav-9f6ec310ab1d6f7e9aec698c8a40ca75.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
