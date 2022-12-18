@@ -57,7 +57,7 @@ func _process(delta):
 	
 	text_start += delta
 	%Text.text = "[center][fade start=" + str(int(round(text_start*30))) + " length=10]" + text + "[/fade][/center]"
-	%Text.modulate.a = min(0.75, len(text)/7 - text_start + 1)
+	%Text.modulate.a = min(0.75, len(text)/7.0 - text_start + 1)
 
 func _physics_process(delta):
 	var color = Color.WHITE
@@ -71,6 +71,7 @@ func _physics_process(delta):
 		if randf() < 0.005:
 			lightning_emis = 1.5 + randf()
 			lightning = 0.5 + randf() * 0.3
+			%Thunder.play()
 		
 	lightning_emis = lerp(lightning_emis, 0.02, 0.5)
 	for window in get_tree().get_nodes_in_group("windows"):
@@ -123,3 +124,12 @@ func _on_reload_button_pressed():
 func set_text(t):
 	text = t
 	text_start = -1
+
+func _on_quit_button_pressed():
+	get_tree().quit()
+
+
+func _on_start_button_pressed():
+	%StartScreen.queue_free()
+	%MarginContainer.visible = true
+	set_text("It's late, I gotta go to work")

@@ -73,6 +73,10 @@ func _on_body_entered(body):
 		get_node("/root/Main").set_text("[shake rate=5 level=10][color=red]YOU DIED[/color][/shake]")
 		%DeathIcon.visible = true
 		$SFXDeath.play()
-		await get_tree().create_timer(3).timeout
+		await get_tree().create_timer(4).timeout
 		get_node("/root/Main").load_level()
+	elif body.is_in_group("doors"):
+		var s: AudioStreamPlayer2D = body.get_parent().get_node("Sound")
+		if not s.playing:
+			s.play()
 		

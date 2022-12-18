@@ -8,5 +8,5 @@ func _ready():
 
 func _on_flare_picked():
 	if not played:
-		get_node("/root/Main").set_text("Press Right Mouse Button to through a flare to the cursor")
+		get_node("/root/Main").set_text("Press Right Mouse Button to throw a flare to the cursor")
 		played = true

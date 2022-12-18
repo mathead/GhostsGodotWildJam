@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwgr0rlyi7nst" path="res://images/survivor1_gun.png" id="2_m2ljl"]
 [ext_resource type="PackedScene" uid="uid://dx0jfxifar8wq" path="res://flashlight.tscn" id="3_vn20y"]
 [ext_resource type="AudioStream" uid="uid://cohtwwpley0w3" path="res://Audio/SFX/GWJ52 SFX - playerDeath.wav" id="4_lh11j"]
-[ext_resource type="AudioStream" uid="uid://cttvs47uj556s" path="res://Audio/SFX/LDJ22_SFX_03_step_01.wav" id="5_bnwbj"]
+[ext_resource type="AudioStream" uid="uid://dhaljlw5ylqpg" path="res://Audio/SFX/Footsteps/GWJ52 SFX - Footstep 1.wav" id="5_3jte6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ivcda"]
 friction = 0.09
@@ -81,8 +81,8 @@ wait_time = 0.314
 one_shot = true
 
 [node name="SFXFootsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_bnwbj")
-volume_db = -15.633
+stream = ExtResource("5_3jte6")
+volume_db = -5.53
 pitch_scale = 0.66
 mix_target = 2
 bus = &"SFX"

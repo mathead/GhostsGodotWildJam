@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dohyiukih1svw"]
+[gd_scene load_steps=9 format=3 uid="uid://dohyiukih1svw"]
 
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="1_nejn5"]
+[ext_resource type="AudioStream" uid="uid://bcl64dnw0s1bj" path="res://Audio/SFX/GWJ52 SFX - door.wav" id="2_hpch8"]
+[ext_resource type="AudioStream" uid="uid://bwoyl6gqsyeuj" path="res://Audio/SFX/GWJ52 SFX - door 2.wav" id="3_o5puk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7exf"]
 radius = 13.9994
@@ -15,9 +17,18 @@ size = Vector2(6.83568, 16.485)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbfu0"]
 radius = 13.0384
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g8huy"]
+streams_count = 2
+playback_mode = 1
+random_pitch = 2.19
+stream_0/stream = ExtResource("2_hpch8")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_o5puk")
+stream_1/weight = 1.0
+
 [node name="Door" type="Node2D"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["doors"]]
 collision_layer = 16
 collision_mask = 95
 mass = 10.0
@@ -76,4 +87,5 @@ collision_mask = 0
 position = Vector2(-58, -71)
 shape = SubResource("CircleShape2D_rbfu0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_g8huy")

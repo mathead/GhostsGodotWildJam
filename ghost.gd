@@ -16,9 +16,9 @@ func _physics_process(delta):
 		# TODO: Find a dark spot
 		%Agent.target_location = global_position - global_position.direction_to(player.global_position)*500
 #		velocity += -player_dir * delta * 1000 * light
-		apply_central_impulse(-player_dir * delta * 500 * light)
+		apply_central_impulse(-player_dir * delta * 1200 * light)
 		$Icon.modulate = Color.BLACK
-		speed *= 2
+		speed *= 1.5
 		
 		
 	else:

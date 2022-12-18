@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://deve4aviylmh6"]
+[gd_scene load_steps=25 format=3 uid="uid://deve4aviylmh6"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_i2qk7"]
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="2_vdmwx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://last_frame_buffer.gdshader" id="6_8rd41"]
 [ext_resource type="FontFile" uid="uid://pekwxkn6c024" path="res://fff-forward.regular.ttf" id="6_cg0vq"]
 [ext_resource type="AudioStream" uid="uid://blwqtsqabe17n" path="res://Audio/Music/GWJ52 - BGM - v01-full v2.ogg" id="7_f08nv"]
+[ext_resource type="AudioStream" uid="uid://dwrnhsb027cmc" path="res://Audio/SFX/GWJ52 SFX - Thunder.wav" id="9_eu3u5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34mb1"]
 resource_local_to_scene = true
@@ -56,6 +57,14 @@ margin_top = 1.0
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 32, 11)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iabub"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eucjl"]
+content_margin_left = 16.0
+content_margin_top = 22.0
+content_margin_right = 7.0
+bg_color = Color(0, 0, 0, 0.8)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xipw4"]
 noise_type = 0
 frequency = 1.0
@@ -78,7 +87,13 @@ shader_parameter/u_emission_multi = 3.0
 shader_parameter/u_emission_range = 1000.0
 shader_parameter/u_max_raymarch_steps = 32
 shader_parameter/u_noise_data = SubResource("NoiseTexture2D_trggk")
-shader_parameter/u_rays_per_pixel = 80.0
+shader_parameter/u_rays_per_pixel = 40.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iy3re"]
+streams_count = 1
+random_pitch = 1.98
+stream_0/stream = ExtResource("9_eu3u5")
+stream_0/weight = 1.0
 
 [node name="Main" type="Node2D"]
 material = SubResource("CanvasItemMaterial_34mb1")
@@ -162,6 +177,7 @@ layer = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -173,13 +189,17 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 179.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="SettingsButton" type="Button" parent="HUD/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
+offset_right = 300.0
+offset_bottom = 31.0
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
@@ -188,39 +208,66 @@ text = "x"
 [node name="Settings" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+offset_top = 35.0
+offset_right = 300.0
+offset_bottom = 169.0
 
-[node name="ReloadButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+[node name="HBoxContainer3" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
+offset_right = 300.0
+offset_bottom = 31.0
+
+[node name="ReloadButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3"]
+offset_right = 148.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
 focus_mode = 0
 text = "Reload Level"
 
+[node name="QuitButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3"]
+offset_left = 152.0
+offset_right = 300.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Quit"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 300.0
+offset_bottom = 65.0
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
-layout_mode = 2
+offset_top = 2.0
+offset_right = 137.0
+offset_bottom = 28.0
 text = "Graphics Quality :"
 
 [node name="GFXSlider" type="HSlider" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
 custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
+offset_left = 141.0
+offset_right = 291.0
+offset_bottom = 30.0
 focus_mode = 0
 min_value = 8.0
 max_value = 128.0
-value = 80.0
+value = 40.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-layout_mode = 2
+offset_top = 69.0
+offset_right = 300.0
+offset_bottom = 104.0
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
-layout_mode = 2
+offset_top = 4.0
+offset_right = 87.0
+offset_bottom = 30.0
 text = "Resolution:"
 
 [node name="Resolution" type="ItemList" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
+offset_left = 91.0
+offset_right = 271.0
+offset_bottom = 35.0
 focus_mode = 0
 auto_height = true
 item_count = 3
@@ -233,7 +280,9 @@ item_2/text = "High"
 
 [node name="FPS" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings"]
 unique_name_in_owner = true
-layout_mode = 2
+offset_top = 108.0
+offset_right = 300.0
+offset_bottom = 134.0
 text = "asdfds"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
@@ -249,7 +298,8 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.372549)
 custom_minimum_size = Vector2(30, 200)
-layout_mode = 2
+offset_right = 30.0
+offset_bottom = 200.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
@@ -262,7 +312,9 @@ fill_mode = 3
 show_percentage = false
 
 [node name="VSeparator" type="VSeparator" parent="HUD/HBoxContainer"]
-layout_mode = 2
+offset_left = 34.0
+offset_right = 39.0
+offset_bottom = 200.0
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_sw8da")
 
@@ -270,7 +322,9 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_sw8da")
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.372549)
 custom_minimum_size = Vector2(30, 200)
-layout_mode = 2
+offset_left = 43.0
+offset_right = 73.0
+offset_bottom = 200.0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
@@ -302,6 +356,99 @@ theme_override_fonts/normal_font = ExtResource("6_cg0vq")
 theme_override_font_sizes/normal_font_size = 38
 bbcode_enabled = true
 text = "[fade start=4 length=14]sdfgsdfsdfsdfsdfsdfsdfsdf[/fade]"
+
+[node name="StartScreen" type="MarginContainer" parent="HUD"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.5
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/StartScreen"]
+offset_left = 200.0
+offset_top = 250.0
+offset_right = 1080.0
+offset_bottom = 793.0
+
+[node name="Text" type="RichTextLabel" parent="HUD/StartScreen/VBoxContainer"]
+clip_contents = false
+offset_left = 440.0
+offset_right = 440.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.372549)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = -4
+theme_override_fonts/normal_font = ExtResource("6_cg0vq")
+theme_override_font_sizes/normal_font_size = 91
+bbcode_enabled = true
+text = "[center]UMBRAL DREAD[/center]"
+fit_content_height = true
+
+[node name="HSeparator" type="HSeparator" parent="HUD/StartScreen/VBoxContainer"]
+offset_top = 130.0
+offset_right = 880.0
+offset_bottom = 270.0
+theme_override_constants/separation = 140
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iabub")
+
+[node name="StartButton" type="Button" parent="HUD/StartScreen/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+offset_left = 296.0
+offset_top = 274.0
+offset_right = 584.0
+offset_bottom = 379.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_cg0vq")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_eucjl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eucjl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eucjl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_eucjl")
+text = "START"
+
+[node name="HSeparator2" type="HSeparator" parent="HUD/StartScreen/VBoxContainer"]
+offset_top = 383.0
+offset_right = 880.0
+offset_bottom = 403.0
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iabub")
+
+[node name="Text2" type="RichTextLabel" parent="HUD/StartScreen/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+offset_left = 440.0
+offset_top = 407.0
+offset_right = 440.0
+offset_bottom = 533.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.372549)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = -4
+theme_override_constants/line_separation = 3
+theme_override_fonts/normal_font = ExtResource("6_cg0vq")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center]Game by MatHead, audio by dreyest
+Tilemap from Kenney
+Global Illumination inspired by sam.bigos[/center]"
+fit_content_height = true
 
 [node name="GIViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
@@ -343,10 +490,17 @@ texture = ExtResource("2_vdmwx")
 
 [node name="Music" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("7_f08nv")
-volume_db = -6.0
+volume_db = -2.433
 autoplay = true
 
+[node name="Thunder" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_iy3re")
+volume_db = -8.32
+
 [connection signal="toggled" from="HUD/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_toggled"]
-[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Settings/ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3/ReloadButton" to="." method="_on_reload_button_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="value_changed" from="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer/GFXSlider" to="." method="_on_gfx_slider_value_changed"]
 [connection signal="item_selected" from="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="pressed" from="HUD/StartScreen/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

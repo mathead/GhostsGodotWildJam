@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c82itirsdsaeq"]
+[gd_scene load_steps=5 format=3 uid="uid://c82itirsdsaeq"]
 
 [ext_resource type="Texture2D" uid="uid://gpdtbyjf5s0a" path="res://1px.png" id="1_jbv0u"]
 [ext_resource type="Script" path="res://window.gd" id="1_rqqkc"]
+[ext_resource type="AudioStream" uid="uid://cl6xx042on1v3" path="res://Audio/SFX/SFX_Ambient wind.wav" id="3_2x5jw"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1ufbb"]
 polygon = PackedVector2Array(-3, -32, 3, -32, 3, 32, -3, 32)
@@ -23,3 +24,9 @@ texture = ExtResource("1_jbv0u")
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_1ufbb")
 occluder_light_mask = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2x5jw")
+volume_db = 1.188
+autoplay = true
+max_distance = 300.0
