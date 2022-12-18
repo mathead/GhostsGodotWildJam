@@ -189,17 +189,13 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 310.0
-offset_bottom = 179.0
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="SettingsButton" type="Button" parent="HUD/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
-offset_right = 300.0
-offset_bottom = 31.0
+layout_mode = 2
 focus_mode = 0
 toggle_mode = true
 button_pressed = true
@@ -208,66 +204,48 @@ text = "x"
 [node name="Settings" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
-offset_top = 35.0
-offset_right = 300.0
-offset_bottom = 169.0
+layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-offset_right = 300.0
-offset_bottom = 31.0
+layout_mode = 2
 
 [node name="ReloadButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3"]
-offset_right = 148.0
-offset_bottom = 31.0
+layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 text = "Reload Level"
 
 [node name="QuitButton" type="Button" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer3"]
-offset_left = 152.0
-offset_right = 300.0
-offset_bottom = 31.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Quit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-offset_top = 35.0
-offset_right = 300.0
-offset_bottom = 65.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
-offset_top = 2.0
-offset_right = 137.0
-offset_bottom = 28.0
+layout_mode = 2
 text = "Graphics Quality :"
 
 [node name="GFXSlider" type="HSlider" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer"]
 custom_minimum_size = Vector2(150, 30)
-offset_left = 141.0
-offset_right = 291.0
-offset_bottom = 30.0
+layout_mode = 2
 focus_mode = 0
 min_value = 8.0
 max_value = 128.0
 value = 40.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HUD/MarginContainer/VBoxContainer/Settings"]
-offset_top = 69.0
-offset_right = 300.0
-offset_bottom = 104.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
-offset_top = 4.0
-offset_right = 87.0
-offset_bottom = 30.0
+layout_mode = 2
 text = "Resolution:"
 
 [node name="Resolution" type="ItemList" parent="HUD/MarginContainer/VBoxContainer/Settings/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
-offset_left = 91.0
-offset_right = 271.0
-offset_bottom = 35.0
+layout_mode = 2
 focus_mode = 0
 auto_height = true
 item_count = 3
@@ -280,9 +258,7 @@ item_2/text = "High"
 
 [node name="FPS" type="Label" parent="HUD/MarginContainer/VBoxContainer/Settings"]
 unique_name_in_owner = true
-offset_top = 108.0
-offset_right = 300.0
-offset_bottom = 134.0
+layout_mode = 2
 text = "asdfds"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
@@ -298,8 +274,7 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.372549)
 custom_minimum_size = Vector2(30, 200)
-offset_right = 30.0
-offset_bottom = 200.0
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
@@ -312,9 +287,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="VSeparator" type="VSeparator" parent="HUD/HBoxContainer"]
-offset_left = 34.0
-offset_right = 39.0
-offset_bottom = 200.0
+layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_sw8da")
 
@@ -322,9 +295,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_sw8da")
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.372549)
 custom_minimum_size = Vector2(30, 200)
-offset_left = 43.0
-offset_right = 73.0
-offset_bottom = 200.0
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/outline_size = 1
@@ -372,16 +343,11 @@ theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/StartScreen"]
-offset_left = 200.0
-offset_top = 250.0
-offset_right = 1080.0
-offset_bottom = 793.0
+layout_mode = 2
 
 [node name="Text" type="RichTextLabel" parent="HUD/StartScreen/VBoxContainer"]
 clip_contents = false
-offset_left = 440.0
-offset_right = 440.0
-offset_bottom = 126.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
@@ -397,18 +363,13 @@ text = "[center]UMBRAL DREAD[/center]"
 fit_content_height = true
 
 [node name="HSeparator" type="HSeparator" parent="HUD/StartScreen/VBoxContainer"]
-offset_top = 130.0
-offset_right = 880.0
-offset_bottom = 270.0
+layout_mode = 2
 theme_override_constants/separation = 140
 theme_override_styles/separator = SubResource("StyleBoxEmpty_iabub")
 
 [node name="StartButton" type="Button" parent="HUD/StartScreen/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
-offset_left = 296.0
-offset_top = 274.0
-offset_right = 584.0
-offset_bottom = 379.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("6_cg0vq")
@@ -420,19 +381,14 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_eucjl")
 text = "START"
 
 [node name="HSeparator2" type="HSeparator" parent="HUD/StartScreen/VBoxContainer"]
-offset_top = 383.0
-offset_right = 880.0
-offset_bottom = 403.0
+layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_iabub")
 
 [node name="Text2" type="RichTextLabel" parent="HUD/StartScreen/VBoxContainer"]
 unique_name_in_owner = true
 clip_contents = false
-offset_left = 440.0
-offset_top = 407.0
-offset_right = 440.0
-offset_bottom = 533.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
@@ -441,13 +397,14 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_outline_size = -4
-theme_override_constants/line_separation = 3
+theme_override_constants/line_separation = 6
 theme_override_fonts/normal_font = ExtResource("6_cg0vq")
-theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
-text = "[center]Game by MatHead, audio by dreyest
+text = "[center]Game by MatHead, Audio by dreyest
 Tilemap from Kenney
-Global Illumination inspired by sam.bigos[/center]"
+Global illumination inspired by sam.bigos
+Made for the Godot Wild Jam, theme: Ghosts, Flashlight[/center]"
 fit_content_height = true
 
 [node name="GIViewport" type="SubViewport" parent="."]
